@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="save()">
+        <ion-icon name="cloud-upload"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-list>
+  <ion-item>
+    <ion-label>Underlying Stock</ion-label>
+    <ion-select [(ngModel)]="gaming">
+      <ion-option value="nes">NES</ion-option>
+      <ion-option value="n64">Nintendo64</ion-option>
+      <ion-option value="ps">PlayStation</ion-option>
+      <ion-option value="genesis">Sega Genesis</ion-option>
+      <ion-option value="saturn">Sega Saturn</ion-option>
+      <ion-option value="snes">SNES</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Strike Price</ion-label>
+    <ion-select [(ngModel)]="price">
+      <ion-option value="price10">$10</ion-option>
+      <ion-option value="price20">$20</ion-option>
+      <ion-option value="price30">$30</ion-option>
+      <ion-option value="price40">$40</ion-option>
+      <ion-option value="price100">$100</ion-option>
+      <ion-option value="price500">$500</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Expiry Date</ion-label>
+    <ion-select [(ngModel)]="expire_date">
+      <ion-option value="m1">JAN10</ion-option>
+      <ion-option value="m2">FEB10</ion-option>
+      <ion-option value="m3">MAR10</ion-option>
+      <ion-option value="m4">APR10</ion-option>
+      <ion-option value="m5">MAY10</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>C/P</ion-label>
+    <ion-select [(ngModel)]="c_p">
+      <ion-option value="c">C</ion-option>
+      <ion-option value="p">P</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>From</ion-label>
+    <ion-datetime displayFormat="MMM D, YYYY h:mm A" 
+                  pickerFormat="MMM D YYYY, h:mm A"
+                  min="2016" max="2020-12-31"
+                  [(ngModel)]="fromTime"
+                  placeholder = "Select Time"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>To</ion-label>
+    <ion-datetime displayFormat="MMM D, YYYY h:mm A" 
+                  pickerFormat="MMM D YYYY, h:mm A"
+                  min="2016" max="2020-12-31"
+                  [(ngModel)]="toTime"
+                  placeholder = "Select Time"></ion-datetime>
+  </ion-item>
+
+</ion-list>
+
+</ion-content>
