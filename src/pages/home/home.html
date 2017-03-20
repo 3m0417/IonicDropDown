@@ -18,49 +18,35 @@
 <ion-list>
   <ion-item>
     <ion-label>Underlying Stock</ion-label>
-    <ion-select [(ngModel)]="gaming">
-      <ion-option value="nes">NES</ion-option>
-      <ion-option value="n64">Nintendo64</ion-option>
-      <ion-option value="ps">PlayStation</ion-option>
-      <ion-option value="genesis">Sega Genesis</ion-option>
-      <ion-option value="saturn">Sega Saturn</ion-option>
-      <ion-option value="snes">SNES</ion-option>
+    <ion-select [(ngModel)]="underlying" *ngIf="arrayUnderlying" (ionChange)="changedUnderlying($event)">
+      <ion-option *ngFor="let item of arrayUnderlying">{{item}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Strike Price</ion-label>
-    <ion-select [(ngModel)]="price">
-      <ion-option value="price10">$10</ion-option>
-      <ion-option value="price20">$20</ion-option>
-      <ion-option value="price30">$30</ion-option>
-      <ion-option value="price40">$40</ion-option>
-      <ion-option value="price100">$100</ion-option>
-      <ion-option value="price500">$500</ion-option>
+    <ion-select [(ngModel)]="price" *ngIf="arrayPrice">
+      <ion-option *ngFor="let item of arrayPrice">{{item}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Expiry Date</ion-label>
-    <ion-select [(ngModel)]="expireDate">
-      <ion-option value="m1">JAN10</ion-option>
-      <ion-option value="m2">FEB10</ion-option>
-      <ion-option value="m3">MAR10</ion-option>
-      <ion-option value="m4">APR10</ion-option>
-      <ion-option value="m5">MAY10</ion-option>
+    <ion-select [(ngModel)]="expireDate" *ngIf="arrayExpireDate">
+      <ion-option *ngFor="let item of arrayExpireDate">{{item}}</ion-option>
     </ion-select>
   </ion-item>
 
   <ion-item>
     <ion-label>C/P</ion-label>
     <ion-select [(ngModel)]="c_p">
-      <ion-option value="c">C</ion-option>
-      <ion-option value="p">P</ion-option>
+      <ion-option value="C">C</ion-option>
+      <ion-option value="P">P</ion-option>
     </ion-select>
   </ion-item>
 
   <ion-item>
     <ion-label>From</ion-label>
-    <ion-datetime displayFormat="MMM D, YYYY h:mm A" 
-                  pickerFormat="MMM D YYYY, h:mm A"
+    <ion-datetime displayFormat="DD-MM-YYYY" 
+                  pickerFormat="D MMM YYYY"
                   min="2016" max="2020-12-31"
                   [(ngModel)]="fromTime"
                   placeholder = "Select Time"></ion-datetime>
@@ -68,13 +54,24 @@
 
   <ion-item>
     <ion-label>To</ion-label>
-    <ion-datetime displayFormat="MMM D, YYYY h:mm A" 
-                  pickerFormat="MMM D YYYY, h:mm A"
+    <ion-datetime displayFormat="DD-MM-YYYY" 
+                  pickerFormat="D MMM YYYY"
                   min="2016" max="2020-12-31"
                   [(ngModel)]="toTime"
                   placeholder = "Select Time"></ion-datetime>
   </ion-item>
 
+  <ion-item>
+    <button ion-button color="light" round block (click)="searchOptions()">
+      <ion-icon name="search"></ion-icon>
+      Search</button>
+  </ion-item>
+</ion-list>
+<ion-list *ngIf="arraySearchResult">
+  <ion-item *ngFor="let item of arraySearchResult">
+    <div> Date Time : {{item.datetime}} </div>
+    <div> Closed Price : {{item.closed_price}} </div>
+  </ion-item>
 </ion-list>
 
 </ion-content>
